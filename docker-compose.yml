@@ -1,0 +1,49 @@
+services:
+  # mongodb:
+  #   image: mongo:latest
+  #   restart: always
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: manthan
+  #     MONGO_INITDB_ROOT_PASSWORD: manthan_1234
+  #     MONGO_INITDB_DATABASE: cricket_db
+  #   ports:
+  #     - 27017:27017
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:3000
+    volumes:
+      - .:/code
+    ports:
+      - "3000:3000"
+    # environment:
+    #   - POSTGRES_NAME=postgres
+    #   - POSTGRES_USER=postgres
+    #   - POSTGRES_PASSWORD=postgres
+    # depends_on:
+    #   - mongodb
+
+
+
+
+# services:
+#   db:
+#     image: postgres
+#     volumes:
+#       - ./data/db:/var/lib/postgresql/data
+#     environment:
+#       - POSTGRES_DB=postgres
+#       - POSTGRES_USER=postgres
+#       - POSTGRES_PASSWORD=postgres
+#   web:
+#     build: .
+#     command: python manage.py runserver 0.0.0.0:8000
+#     volumes:
+#       - .:/code
+#     ports:
+#       - "8000:8000"
+#     environment:
+#       - POSTGRES_NAME=postgres
+#       - POSTGRES_USER=postgres
+#       - POSTGRES_PASSWORD=postgres
+#     depends_on:
+#       - db
